@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tableau JS-API demo</title>
-    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-  </head>
-  <body onload="creatView();">
-    <div id="Container" style="width:800px; height:700px;"></div>
-    <script type="text/javascript">
-      //页面加载后调用
-      function creatView() {
-          // 获取可视化元素,用于嵌入Tableau模块
-          var containerDiv = document.getElementById("Container"),
 
-          //url请求的接口地址(指定 Tableau 服务器的名称)
-          url = "http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
-          // url = "https://public.tableau.com/views/WorldIndicators/GDPpercapita";
+<head>
+  <title>Tableau JS-API demo</title>
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+</head>
 
-          //配置选项
-          options = {
-                  //隐藏tab栏
-                  hideTabs: true,
-                  //加载后执行的回调函数
-                  onFirstInteractive: function () {
-                      console.log("Run this code when the viz has finished loading.");
-                  },
-                  //offsetWidth/offsetHeight  获取的是盒子的真实宽高（width/height+border+padding）
+<body onload="creatView();">
+  <div id="Container" style="width:800px; height:700px;"></div>
+  <script type="text/javascript">
+    //页面加载后调用
+    function creatView() {
+      // 获取可视化元素,用于嵌入Tableau模块
+      var containerDiv = document.getElementById("Container"),
 
-                  //设置图表模块和容器等宽
-                  width:containerDiv.offsetWidth,
-                  //设置图标模块和容器等高
-                  height:containerDiv.offsetHeight
-              };
-          // 实例化一个Talleau视图对象,并传入上述三个参数
-          var view = new tableau.Viz(containerDiv, url, options);
-      }
-    </script>
-  </body>
+        //url请求的接口地址(指定 Tableau 服务器的名称)
+        url = "http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
+        // url = "https://public.tableau.com/views/WorldIndicators/GDPpercapita";
+
+        //配置选项
+        options = {
+          //隐藏tab栏
+          hideTabs: true,
+          //加载后执行的回调函数
+          onFirstInteractive: function () {
+            console.log("Run this code when the viz has finished loading.");
+          },
+          //offsetWidth/offsetHeight  获取的是盒子的真实宽高（width/height+border+padding）
+
+          //设置图表模块和容器等宽
+          width: containerDiv.offsetWidth,
+          //设置图标模块和容器等高
+          height: containerDiv.offsetHeight
+        };
+      // 实例化一个Talleau视图对象,并传入上述三个参数
+      var view = new tableau.Viz(containerDiv, url, options);
+    }
+  </script>
+</body>
+
 </html>
